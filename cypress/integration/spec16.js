@@ -56,6 +56,7 @@ it('adds all fruit using cypress recurse', () => {
 })
 
 it('uses reduce with cypress-recurse', () => {
+  // the predicate function gives you the current reduced value as the 2nd argument
   recurse(
     () => cy.request('GET', '/fruit').its('body.fruit'),
     (fruit, fruits) => fruits.has(fruit),

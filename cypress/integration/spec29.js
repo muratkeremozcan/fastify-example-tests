@@ -20,8 +20,6 @@ it('hides server errors by returning stubbed response', () => {
   //    the fruit from the server response
   //    should be visible
 
-  cy.intercept('GET', '/fruit').as('real')
-
   cy.intercept(
     {
       method: 'GET',
@@ -29,8 +27,7 @@ it('hides server errors by returning stubbed response', () => {
     },
     (req) =>
       req.reply((res) => {
-        // if (res.statusCode !== 200) {
-        if (Math.random() < 0.5) {
+        if (res.statusCode !== 200) {
           return res.send({
             statusCode: 201,
             body: {
@@ -42,5 +39,18 @@ it('hides server errors by returning stubbed response', () => {
       })
   ).as('mango')
 
+  cy.intercept('GET', '/fruit').as('real')
+
   cy.visit('/')
+
+  cy.wait('@real')
+    .its('response')
+    .then((response) => {
+      if (response.statusCode !== 200) {
+        cy.log('server had an error')
+        cy.contains('#fruit', 'Mango')
+      } else {
+        cy.contains('#fruit', response.body.fruit)
+      }
+    })
 })

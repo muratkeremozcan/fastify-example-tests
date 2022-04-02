@@ -17,5 +17,8 @@
     "cypress-recurse": "^1.18.0",
     "openapi-response-validator": "^10.0.0",
     "prettier": "^2.6.0"
+  },
+  "dependencies": {
+    "cypress-data-session": "^2.0.0"
   }
 }
