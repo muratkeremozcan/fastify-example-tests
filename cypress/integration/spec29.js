@@ -1,7 +1,15 @@
 /// <reference types="cypress" />
 
-// TODO: look at this again after March 23rd
 it('hides server errors by returning stubbed response', () => {
+  /*
+    Per the docs you can supply a StaticResponse to Cypress in 4 ways:
+
+    cy.intercept() with an argument: to stub a response to a route; cy.intercept('/url', staticResponse)
+    req.reply(): to stub a response from a request handler; req.reply(staticResponse)
+    req.continue(): to stub a response from a request handler, while letting the request continue to the destination server; req.continue(res => {..} )
+    res.send(): to stub a response from a response handler; res.send(staticResponse)
+  */
+
   // intercept the GET /fruit call and
   // look at the server response
   // if the response code is not 200
