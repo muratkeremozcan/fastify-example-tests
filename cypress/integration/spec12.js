@@ -19,6 +19,7 @@ it('does not call API until 60 seconds passed', () => {
   // tick 59 seconds
   cy.tick(59_000)
   // confirm the spy was not executed = there were no network calls
+  cy.get('@fruitSpy').should('not.be.called')
   // tick 1 second
   cy.tick(1_000)
   // confirm the spy was executed = there was a network call

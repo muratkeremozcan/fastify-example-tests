@@ -22,8 +22,8 @@ beforeEach(() => {
       url: '/fruit',
       middleware: true
     },
-    (req) => {
-      req.continue((res) => {
+    (req) =>
+      req.reply((res) => {
         const result = validator.validateResponse(res.statusCode, res.body)
         console.log(result)
         if (result) {
@@ -32,7 +32,6 @@ beforeEach(() => {
           )
         }
       })
-    }
   ).as('alias')
 })
 

@@ -16,11 +16,12 @@ it('sets the intercept alias from the callback', () => {
       url: '/fruit'
     },
     (req) => {
-      req.alias = 'fruit'
+      req.alias = 'customAlias'
       return req.reply({ fruit })
     }
   ).as('interceptAlias')
 
   cy.visit('/')
+  cy.wait('@customAlias')
   cy.contains(fruit)
 })

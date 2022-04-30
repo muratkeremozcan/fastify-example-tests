@@ -17,7 +17,7 @@ it('fetches 10 fruits from the server', () => {
   cy.wait('@fruit')
   cy.wrap(list).should('have.length', 1)
 
-  // advance the clock by 9 minutes
+  // advance the clock by 9 minutes/*  */
   // https://on.cypress.io/tick
 
   Cypress._.times(9, () => {

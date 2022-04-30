@@ -24,26 +24,11 @@ it('gets all interceptions', () => {
     cy.wait('@fruit')
   })
 
+  // KEY: cy.get(alias.all) gets an array of all aliases of the same name
   cy.get('@fruit.all')
     .should('have.length.gte', 4)
     .then(console.log)
     .each((response) => cy.wrap(response.requestWaited).should('eq', true))
-})
-
-it('uses cypress-recurse each feature', () => {
-  cy.intercept('GET', '/fruit').as('fruit')
-  cy.visit('/')
-  cy.wait('@fruit')
-  _.times(3, () => {
-    cy.reload()
-    cy.wait('@fruit')
-  })
-
-  cy.get('@fruit.all')
-    .should('have.length.gte', 4)
-    .then(
-      each((response) => cy.wrap(response.requestWaited).should('eq', true))
-    )
 })
 
 it('uses cypress-recurse each feature with optional stop condition', () => {
@@ -57,8 +42,15 @@ it('uses cypress-recurse each feature with optional stop condition', () => {
 
   cy.get('@fruit.all')
     .should('have.length.gte', 4)
+    // https://github.com/bahmutov/cypress-recurse#each
+    // cypress-recurse includes an each function that iterates over the given subject items.
+    // It can optionally stop when the separate predicate function returns true.
     .then(
       each(
+        // regular .each yields the responses from the original item ( the call )
+        // cypress-recurse each yields original item itself (the call), kind of like what then(console.log) yielded,
+        // and does something with the call every recursion
+
         (call) => call.response.body.fruit,
         // or lol
         // ({
@@ -66,6 +58,8 @@ it('uses cypress-recurse each feature with optional stop condition', () => {
         //     body: { fruit }
         //   }
         // }) => fruit,
+
+        // PERK over .each: optional stop condition
         (fruit) => fruit === 'Bananas'
       )
     )
