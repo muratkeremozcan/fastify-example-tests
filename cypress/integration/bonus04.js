@@ -23,9 +23,11 @@ it('waits for all JavaScript bundles to load', () => {
   cy.intercept('GET', /\.js$/, (req) => {
     const path = getPath(req.url)
 
+    // increment the count of path
     jsResources[path] = (jsResources[path] || 0) + 1
-    console.log(jsResources[path])
-    console.log(jsResources)
+    console.log('jsResources :', jsResources)
+    console.log('path', path)
+    console.log('jsResources[path] / jsResources.path:', jsResources[path])
 
     req.continue(() => {
       jsResources[path] -= 1
@@ -37,7 +39,7 @@ it('waits for all JavaScript bundles to load', () => {
   // KEY: if we do not wait for the js resource, the test will fail
   cy.wait('@js-resources').its('response.url').should('include', '/click.js')
 
-  // Then check if all requests to have finished loading by checking that all values in the object are zeroes.
+  // (optional) Then check if all requests have finished loading by checking that all values in the object are zeroes.
   cy.wrap(jsResources).should((counts) => {
     // under the counts object, find all the keys with a value.
     console.log(Object.keys(counts))
