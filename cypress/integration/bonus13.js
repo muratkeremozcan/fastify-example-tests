@@ -17,7 +17,8 @@ Per the docs you can supply a StaticResponse to Cypress in 4 ways:
 	(0) cy.intercept() with an argument to stub a response to a route - cy.intercept(method, url, staticResponse)
 	(1) req.reply(): to stub a response from a request handler - again, similar to cy.intercept(method, url, staticResponse)
 	(2) req.continue(): to stub a response from a request handler, while letting the request continue to the destination server; req.continue(res => {..} )
-	(3) res.send(): to stub a response from a response handler; req.reply(res => res.send(staticResponse)) or req.continue(res => res.send(staticResponse))
+	(3) res.send(): to stub a response from a response handler; used to to make a real request and modify the response
+  //  req.reply(res => res.send(staticResponse)) or req.continue(res => res.send(staticResponse))
 */
 
 it('stubs the network call with the same object', () => {
