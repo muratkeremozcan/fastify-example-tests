@@ -1,24 +1,50 @@
 chai.config.truncateThreshold = 200
 /*
-When you use the cy.intercept command you must decide if you want to simply observe the network call
+When you use the cy.intercept command you must decide
+if you want to simply observe the network call
 or stub it to prevent it going to the server.
 
-(0) In simple cases, a declarative way lets you spy or stub every request matching the parameters in the same way.
-cy.intercept(method, url) // spy on the call
-cy.intercept(method, url, staticResponse) // stub the call, return the "staticResponse" object
+In simple cases, a declarative way
+lets you spy or stub every request
+matching the parameters in the same way.
 
-Sometimes you need more logic to decide how to spy or stub the intercepted call, including stubbing only some calls, but not the others.
+// spy on the call
+cy.intercept(method, url)
+// stub the call, return the "staticResponse" object
+cy.intercept(method, url, staticResponse)
+
+Sometimes you need more logic to decide how to spy or stub the intercepted call,
+including stubbing only some calls, but not the others.
 This is where the request.reply and request.continue are useful.
 
-(1) request.reply() is similar to stubbing the call with cy.intercept(method, url, staticResponse)
-(2) request.continue() lets you allow the intercepted request to continue going to the server.
+request.reply() is similar to stubbing the call with
+cy.intercept(method, url, staticResponse)
+
+request.continue() lets you allow the intercepted request
+to continue going to the server.
 
 Per the docs you can supply a StaticResponse to Cypress in 4 ways:
-	(0) cy.intercept() with an argument to stub a response to a route - cy.intercept(method, url, staticResponse)
-	(1) req.reply(): to stub a response from a request handler - again, similar to cy.intercept(method, url, staticResponse)
-	(2) req.continue(): to stub a response from a request handler, while letting the request continue to the destination server; req.continue(res => {..} )
-	(3) res.send(): to stub a response from a response handler; used to to make a real request and modify the response
-  //  req.reply(res => res.send(staticResponse)) or req.continue(res => res.send(staticResponse))
+
+(0) cy.intercept() with an argument to stub a response to a route
+
+ex: cy.intercept(method, url, staticResponse)
+
+(1) req.reply(): to stub a response from a request handler,
+similar to cy.intercept(method, url, staticResponse)
+
+ex: cy.intercept(method, url, req => req.reply(res => {..})
+
+(2) req.continue(): to stub a response from a request handler,
+while letting the request continue to the destination server
+
+ex: cy.intercept(method, url, req => req.continue(res => {..})
+
+(3) res.send(): to stub a response from a response handler;
+used to to make a real request and modify the response
+
+ex:
+cy.intercept(method, url, req => req.reply(res => res.send(staticResponse))
+cy.intercept(method, url, req => req.continue(res => res.send(staticResponse))
 */
 
 it('stubs the network call with the same object', () => {

@@ -116,7 +116,7 @@ it('uses reduce with cypress-recurse', () => {
       reduce: (fruits, fruit) => fruits.add(fruit), // reduce(accumulator, item) receives each value and the current accumulator value
       // note: The argument that post takes is a single object with limit, value, and reduced(?) properties.
       // https://github.com/bahmutov/cypress-recurse#post
-      post: ({ value, limit /* reduced */ }) => {
+      post: ({ value, limit /*, reduced */ }) => {
         cy.log(`value is : ${value}`)
         cy.log(`limit is : ${limit}`)
         // cy.log(`reduced is : ${reduced}`) // undefined

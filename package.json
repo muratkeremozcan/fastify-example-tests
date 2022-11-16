@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open --e2e --browser chrome"
   },
   "keywords": [
     "cypress-examples"
@@ -14,13 +14,13 @@
   "license": "MIT",
   "devDependencies": {
     "cy-spok": "^1.5.2",
-    "cypress": "^9.6.0",
-    "cypress-cdp": "^1.1.0",
-    "cypress-recurse": "^1.18.0",
-    "openapi-response-validator": "^10.0.0",
-    "prettier": "^2.6.0"
+    "cypress": "^11.0.1",
+    "cypress-cdp": "^1.2.0",
+    "cypress-recurse": "^1.23.0",
+    "openapi-response-validator": "10.0.0",
+    "prettier": "^2.7.1"
   },
   "dependencies": {
-    "cypress-data-session": "^2.0.0"
+    "cypress-data-session": "^2.2.1"
   }
 }

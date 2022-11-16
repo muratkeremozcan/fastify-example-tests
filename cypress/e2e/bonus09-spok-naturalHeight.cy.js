@@ -31,11 +31,9 @@ it('requests an image and gets its dimensions', () => {
       // and confirm its value is 914 pixels
       console.dir(image) // output it json-like instead of html-like, for convenience
 
-      expect(image).to.have.property('naturalHeight')
-      expect(image.naturalHeight).to.eq(914)
-
       // alternative assertion
       cy.wrap(image).its('0.naturalHeight').should('eq', 914)
+      expect(image).to.have.property('naturalHeight')
 
       // spok assertion
       cy.wrap(image).should(

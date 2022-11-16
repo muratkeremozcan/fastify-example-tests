@@ -20,14 +20,14 @@ it('sets a common header on all requests', () => {
 
   // visit the page using https://on.cypress.io/visit
   cy.visit('/')
-  cy.wait('@dom').as('domWait')
+  cy.wait('@dom')
   cy.wait('@interceptAll').as('serverWait')
 
   // wait for the observed request(s)
   // and confirm the response header "x-request-id"
   // sent by the server back is the same as our
   // request ID we set above
-  cy.get('@domWait')
+  cy.get('@dom')
     .its('response.headers')
     .its('x-request-id')
     .should('eq', requestId)

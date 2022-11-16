@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+// spy on intercept
 it('does not call API until 60 seconds passed', () => {
   // spy on the GET /fruit call and pass a cy.spy function
   // as the request handler. The callback function does nothing

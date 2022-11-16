@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
-import * as data from '../fixtures/apple.json'
-// import the fixture JSON data from the file "../fixtures/apple.json"
+// import * as data from '../fixtures/apple.json'
+import data from '../fixtures/apple.json' // same as above
+// import JSON data from the file "../fixtures/apple.json"
 
 it('imports the fixture from JSON file', () => {
   // print the imported fruit to the Command Log
