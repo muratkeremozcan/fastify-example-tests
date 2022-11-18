@@ -13,12 +13,14 @@
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/ramda": "^0.28.20",
     "cy-spok": "^1.5.2",
     "cypress": "^11.0.1",
     "cypress-cdp": "^1.2.0",
     "cypress-recurse": "^1.23.0",
     "openapi-response-validator": "10.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ramda": "^0.28.0"
   },
   "dependencies": {
     "cypress-data-session": "^2.2.1"
