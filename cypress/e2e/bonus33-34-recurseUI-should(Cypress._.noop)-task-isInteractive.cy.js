@@ -1,5 +1,10 @@
 // https://github.com/bahmutov/cypress-recurse
 import { recurse } from 'cypress-recurse'
+// https://github.com/EvanHahn/HumanizeDuration.js
+import humanizeDuration from 'humanize-duration'
+
+// use shorter polling when running using the "cypress open" command
+const delay = Cypress.config('isInteractive') ? 5_000 : 15_000
 
 // In the tests we will add new items to our "database"
 // and then check if we can find the new items using the "search service"
@@ -69,8 +74,22 @@ it('adds a new item and then finds it (retries the search)', function () {
     ($el) => $el.length,
     {
       log: 'found the item',
-      delay: 10_000,
-      timeout: 120_000
+      delay,
+      timeout: 120_000,
+      post(postRest) {
+        console.log(postRest)
+        const msg = postRest.success
+          ? '✅ item is in our database'
+          : '⏳ looking for item'
+        cy.task(
+          'print',
+          msg +
+            ' after ' +
+            humanizeDuration(postRest.elapsed, {
+              round: true
+            })
+        )
+      }
     }
   )
   // check the item is found for sure
@@ -97,8 +116,21 @@ it('adds a new item and then finds it (retries the API calls)', function () {
     (response) => response.isOkStatusCode,
     {
       log: '✅ item is in our database',
-      delay: 10_000,
-      timeout: 60_000
+      delay,
+      timeout: 60_000,
+      post({ elapsed, success }) {
+        const msg = success
+          ? '✅ item is in our database'
+          : '⏳ looking for item'
+        cy.task(
+          'print',
+          msg +
+            ' after ' +
+            humanizeDuration(elapsed, {
+              round: true
+            })
+        )
+      }
     }
   )
   // call the search API until it finds the item
@@ -118,8 +150,21 @@ it('adds a new item and then finds it (retries the API calls)', function () {
     (response) => response.isOkStatusCode,
     {
       log: '✅ item has been scraped',
-      delay: 10_000,
-      timeout: 60_000
+      delay,
+      timeout: 60_000,
+      post({ elapsed, success }) {
+        const msg = success
+          ? '✅ item is in our database'
+          : '⏳ looking for item'
+        cy.task(
+          'print',
+          msg +
+            ' after ' +
+            humanizeDuration(elapsed, {
+              round: true
+            })
+        )
+      }
     }
   )
 
