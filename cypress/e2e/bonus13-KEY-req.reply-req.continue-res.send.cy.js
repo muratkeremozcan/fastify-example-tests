@@ -26,25 +26,37 @@ to continue going to the server.
 Per the docs you can supply a StaticResponse to Cypress in 4 ways:
 
 (0) cy.intercept() with an argument to stub a response to a route
-
-ex: cy.intercept(method, url, staticResponse)
+cy.intercept(method, url, staticResponse)
 
 (1) req.reply(): to stub a response from a request handler,
 similar to cy.intercept(method, url, staticResponse)
-
-ex: cy.intercept(method, url, req => req.reply(res => {..})
+cy.intercept(method, url, req => req.reply(res => {..})
 
 (2) req.continue(): to stub a response from a request handler,
 while letting the request continue to the destination server
-
-ex: cy.intercept(method, url, req => req.continue(res => {..})
+cy.intercept(method, url, req => req.continue(res => {..})
 
 (3) res.send(): to stub a response from a response handler;
 used to to make a real request and modify the response
-
-ex:
-cy.intercept(method, url, req => req.reply(res => res.send(staticResponse))
 cy.intercept(method, url, req => req.continue(res => res.send(staticResponse))
+
+req.reply and res.send are similar, the distinction is when the recipient gets it, and from where.
+req.reply happens first, an immediate stub
+res.send happens later, a stub from the server
+res.send only happens after req.continue, since it needs the response to handle
+
+cy.intercept(..., (request) => {
+  if (...) {
+   request.reply({ fixture: 'error.json' })
+  } else {
+    request.continue(response => {
+      if (something about the response) {
+        response.send( fixture: 'success.json' })
+      }
+     // else the real server response is sent
+    })
+  }
+})
 */
 
 it('stubs the network call with the same object', () => {
