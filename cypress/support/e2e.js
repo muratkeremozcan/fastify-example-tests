@@ -15,7 +15,11 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-cdp'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// bonus46.cy.js - if you want a beforeEach / before hook to run before every test
+// beforeEach(() => {
+//   cy.log('HELLO')
+// })
