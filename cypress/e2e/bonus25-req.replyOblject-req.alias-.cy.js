@@ -20,7 +20,7 @@ it('mocks the response by inspecting the request body', () => {
         answer: req.body.a + req.body.b
       })
     }
-  }).as('calculate')
+  })
 
   // https://on.cypress.io/wait
 
@@ -44,7 +44,7 @@ it('mocks the response by inspecting the request body', () => {
   // because there is only a single intercept and
   // we have waited for it, now we can get it again
   // using the cy.get('@calculate') command
-  cy.get('@calculate')
+  cy.get('@add')
 
   // confirm the answer shown is correct
   // https://on.cypress.io/contains

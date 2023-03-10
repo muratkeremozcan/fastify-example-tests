@@ -1,5 +1,7 @@
 chai.config.truncateThreshold = 200
 /*
+cy.intercept cheat sheet
+
 When you use the cy.intercept command you must decide
 if you want to simply observe the network call
 or stub it to prevent it going to the server.
