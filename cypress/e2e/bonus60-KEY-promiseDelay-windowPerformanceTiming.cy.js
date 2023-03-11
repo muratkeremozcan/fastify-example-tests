@@ -36,10 +36,11 @@ it('loads', { viewportWidth: 800, viewportHeight: 1000 }, () => {
       })
   })
 
+  // 2nd version
   cy.window()
     .its('performance.timing')
     // .tap()
     .print()
-    .map((t) => t.domContentLoadedEventEnd - t.navigationStart)
-  // .should('be.within', 1000, 1100)
+    .then((t) => t.domContentLoadedEventEnd - t.navigationStart)
+    .should('be.within', 1000, 1100)
 })
