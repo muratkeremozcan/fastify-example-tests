@@ -31,3 +31,11 @@ it('includes the fruit Apples in the response array of objects', () => {
   // https://on.cypress.io/contains
   cy.contains('#fruits li:first', 'Apples')
 })
+
+it('play with cypress-map', () => {
+  cy.wrap(100).partial(Cypress._.add, 5).should('equal', 105)
+  // same as
+  cy.wrap(100)
+    .apply((subject) => Cypress._.add(5, subject))
+    .should('equal', 105)
+})
