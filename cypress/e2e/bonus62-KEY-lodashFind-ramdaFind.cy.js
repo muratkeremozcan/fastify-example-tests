@@ -21,9 +21,9 @@ it('includes the fruit Apples in the response array of objects', () => {
   // and confirm the item has property "k: 0"
   cy.wait('@all-fruits')
     .its('response.body')
-    .then((list) => Cypress._.find(list, { fruit: 'Apples' })) // vanilla version
-    .then(find(propEq('fruit', 'Apples'))) // ramda version
-    .print()
+    // .then((list) => Cypress._.find(list, { fruit: 'Apples' })) // vanilla version
+    // .then(find(propEq('fruit', 'Apples'))) // ramda version
+    .findOne({ fruit: 'Apples' }) // cypres-map version is best because it retries
     .should('be.an', 'object')
     .should('have.property', 'k', 0)
   // confirm the "Apples" is shown at the first position
@@ -36,6 +36,6 @@ it('play with cypress-map', () => {
   cy.wrap(100).partial(Cypress._.add, 5).should('equal', 105)
   // same as
   cy.wrap(100)
-    .apply((subject) => Cypress._.add(5, subject))
+    .apply((subject) => Cypress._.add(5, subject)) // apply is like then but retries
     .should('equal', 105)
 })

@@ -1,0 +1,23 @@
+[
+  {
+    "method": "POST",
+    "url": "/track",
+    "body": "{\"eventName\":\"load\",\"args\":{}}",
+    "status": 200,
+    "response": "{\"ok\":true}"
+  },
+  {
+    "method": "POST",
+    "url": "/track",
+    "body": "{\"eventName\":\"+\",\"args\":{\"a\":20,\"b\":6}}",
+    "status": 200,
+    "response": "{\"ok\":true}"
+  },
+  {
+    "method": "POST",
+    "url": "/calculate",
+    "body": "{\"a\":20,\"b\":6,\"operation\":\"+\"}",
+    "status": 200,
+    "response": "{\"answer\":26,\"a\":20,\"b\":6,\"operation\":\"+\"}"
+  }
+]

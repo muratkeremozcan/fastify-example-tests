@@ -347,10 +347,10 @@
   "resolved" "https://registry.npmjs.org/cypress-expect-n-assertions/-/cypress-expect-n-assertions-1.0.2.tgz"
   "version" "1.0.2"
 
-"cypress-map@^1.13.1":
-  "integrity" "sha512-VvApnXZFPr5z957XotEmh9NbiamqQMFQwZXqTdaeXY8ajxhY/laxKisiUvrQjejA6hzPU2ENLKKtW/Qaxo0+Ww=="
-  "resolved" "https://registry.npmjs.org/cypress-map/-/cypress-map-1.13.1.tgz"
-  "version" "1.13.1"
+"cypress-map@^1.14.0":
+  "integrity" "sha512-CCLbl3n8wLBXWcmtf3IRMgK4hXMx7WqdBxlv0nUuyf8PupfFF0Fu6m0Rmctf/sZmmpgVpNEP6Fq9lnmZpH2Xsg=="
+  "resolved" "https://registry.npmjs.org/cypress-map/-/cypress-map-1.14.0.tgz"
+  "version" "1.14.0"
   dependencies:
     "string-format" "^2.0.0"
 
