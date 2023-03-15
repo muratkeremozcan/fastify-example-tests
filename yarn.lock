@@ -354,10 +354,10 @@
   dependencies:
     "string-format" "^2.0.0"
 
-"cypress-network-idle@^1.11.0":
-  "integrity" "sha512-PFKM/We0bwzuNLWyQXI20IRk80TmBXH9mOWfhOL1T8adT3th6JeZZQuhxG1/nfic2A9d4qX7pc3mpA38n2y/+Q=="
-  "resolved" "https://registry.npmjs.org/cypress-network-idle/-/cypress-network-idle-1.11.0.tgz"
-  "version" "1.11.0"
+"cypress-network-idle@^1.14.2":
+  "integrity" "sha512-xAdR8dH58KFPv8eCDWjviScITrJOcUpuMXYfYTc175nk2/NvnJ+I6ylSn1CM7yZmoV/gLbFa36QLiH5NfNEaLQ=="
+  "resolved" "https://registry.npmjs.org/cypress-network-idle/-/cypress-network-idle-1.14.2.tgz"
+  "version" "1.14.2"
 
 "cypress-plugin-config@^1.2.0":
   "integrity" "sha512-vgMMwjeI/L+2xptqkyhJ20LRuZrrsdbPaGMNNLVq+Cwox5+9dm0E312gpMXgXRs05uyUAzL/nCm/tdTckSAgoQ=="
