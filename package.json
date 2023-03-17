@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/ramda": "^0.28.20",
     "cy-spok": "^1.5.2",
-    "cypress": "12.1.0",
+    "cypress": "12.8.1",
     "cypress-cdp": "^1.2.0",
     "cypress-expect-n-assertions": "^1.0.2",
     "cypress-map": "^1.14.0",
