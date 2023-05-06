@@ -1,4 +1,5 @@
 // https://cypress.tips/courses/network-testing/lessons/bonus74
+import 'cypress-map'
 
 it('takes a while to execute 4 slow cy.requests', () => {
   // the backend API endpoint /slow/:id takes 10 seconds to respond
@@ -18,6 +19,17 @@ it('takes a while to execute 4 slow cy.requests', () => {
   cy.request('POST', '/slow/4')
     .its('body')
     .should('deep.equal', { ok: true, id: '4' })
+})
+
+it('makes 4 API calls in in serial with .each or .mapChain using cy.request', () => {
+  const endPoints = ['/slow/1', '/slow/2', '/slow/3', '/slow/4']
+
+  cy.wrap(endPoints).each((endpoint, index) =>
+    cy
+      .request('POST', endpoint)
+      .its('body')
+      .should('deep.equal', { ok: true, id: String(index + 1) })
+  )
 })
 
 it('makes 4 API calls in parallel using the window.fetch', () => {
@@ -78,7 +90,7 @@ it('makes 4 API calls in parallel using the window.fetch', () => {
     })
 })
 
-it.only('async await version', () => {
+it('async await version', () => {
   cy.window()
     .its('fetch')
     .then({ timeout: 11_000 }, async (fetch) => {
