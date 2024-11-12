@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import { recurse } from 'cypress-recurse'
+import spok from 'cy-spok'
 
 it('requests all fruits', () => {
   // request the fruit from the /fruit endpoint
@@ -64,7 +65,12 @@ it('adds all fruit using cypress recurse', () => {
 it('uses reduce with cypress-recurse', () => {
   // the predicate function gives you the current reduced value as the 2nd argument
   recurse(
-    () => cy.request('GET', '/fruit').its('body.fruit'),
+    () =>
+      cy
+        .request('GET', '/fruit')
+        .should(Cypress._.noop)
+        .then(spok({ body: { fruit: spok.string } }))
+        .its('body.fruit'),
     // note: accumulator is that which which keeps the returned value after every iteration
     // the signature here is (item, accumulator)
     // https://github.com/bahmutov/cypress-recurse#post

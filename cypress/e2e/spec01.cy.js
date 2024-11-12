@@ -1,6 +1,3 @@
-// make sure the IntelliSense works in this JavaScript spec file
-/// <reference types="Cypress" />
-
 it('shows some fruit', () => {
   // define baseUrl in cypress.json
   // set the convenient viewport in cypress.json
