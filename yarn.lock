@@ -346,6 +346,11 @@ cypress-cdp@^1.4.34:
   dependencies:
     devtools-protocol "^0.0.1380148"
 
+cypress-command-chain@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/cypress-command-chain/-/cypress-command-chain-1.1.2.tgz"
+  integrity sha512-O+Hmlkn5nALFdSS3GrH0niQIQRfarGbIl7smwzMnUCCFAsbeYsPRqH7GILzAOMCjTVn3PnXOVVVW0RMqMWLUWQ==
+
 cypress-data-session@^2.8.5:
   version "2.8.5"
   resolved "https://extend-159581800400.d.codeartifact.us-east-1.amazonaws.com/npm/extend-npm/cypress-data-session/-/cypress-data-session-2.8.5.tgz"
