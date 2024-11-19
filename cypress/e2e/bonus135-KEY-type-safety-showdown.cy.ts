@@ -27,7 +27,6 @@ it('Generic Type Parameters', () => {
 it('Type Annotation', () => {
   cy.wait('@getFruit')
     .its('response.body')
-    .its('body')
     .then((body: GetFruitResponse) => {
       expect(body.fruit).to.be.a('string')
     })
@@ -38,7 +37,6 @@ it('Type Annotation', () => {
 it('Type Assertion with as', () => {
   cy.wait('@getFruit')
     .its('response.body')
-    .its('body')
     .then((body) => {
       const typedBody = body as GetFruitResponse
       expect(typedBody.fruit).to.be.a('string')

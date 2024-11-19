@@ -1,0 +1,54 @@
+[
+  {
+    "call": 1,
+    "method": "GET",
+    "url": "http://localhost:4200/fruit",
+    "request": "",
+    "response": {
+      "fruit": "Oranges"
+    }
+  },
+  {
+    "call": 2,
+    "method": "POST",
+    "url": "http://localhost:4200/track",
+    "request": {
+      "eventName": "load",
+      "args": {}
+    },
+    "response": {
+      "ok": true
+    }
+  },
+  {
+    "call": 3,
+    "method": "POST",
+    "url": "http://localhost:4200/track",
+    "request": {
+      "eventName": "+",
+      "args": {
+        "a": 2,
+        "b": 3
+      }
+    },
+    "response": {
+      "ok": true
+    }
+  },
+  {
+    "call": 4,
+    "method": "POST",
+    "url": "http://localhost:4200/calculate",
+    "request": {
+      "a": 2,
+      "b": 3,
+      "operation": "+"
+    },
+    "response": {
+      "answer": 5,
+      "a": 2,
+      "b": 3,
+      "operation": "+"
+    }
+  }
+]
